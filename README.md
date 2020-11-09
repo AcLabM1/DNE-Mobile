@@ -61,5 +61,3 @@ Un **QR Code** apparaîtra alors dans votre terminal ainsi que dans un onglet de
 Pour tester l'application sur votre smartphone, il faudra alors **lancer l'application expo**, sélectionner **Scan QR Code** et **scanner le QR code**.
 
 L'application devrait se lancer sur votre smartphone et se rafraichir à chaque fois que vous enregistrerez une modification dans le code.
-
-<p align="right">Par Gianni GIUDICE</p>
