@@ -1,20 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import LoginForm from "./Components/LoginForm";
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from "./src/screens/HomeScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <LoginForm/>
-    </View>
-  );
-}
+const AppNavigator = createStackNavigator(
+    {
+        Connexion: LoginScreen,
+        Accueil: HomeScreen
+    },
+    {
+      initialRouteName: 'Connexion',
+    },
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#2b99ce'
-  },
-});
+export default createAppContainer(AppNavigator);

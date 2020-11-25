@@ -4,17 +4,24 @@ import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
 class LoginForm extends React.Component {
     render() {
         return(
-            <View style={ styles.main_container }>
-                <Text h1 style={ styles.h1 }>PORTAIL DNE</Text>
-                <TextInput style={ styles.text_input } placeholder='Pseudo' placeholderTextColor='#fff' />
-                <TextInput style={ styles.text_input } placeholder='Mot de passe' placeholderTextColor='#fff' secureTextEntry={ true } />
-                <Text style={ styles.button } onPress={() => {}}>Valider</Text>
+            <View style={styles.container}>
+                <View style={ styles.main_container }>
+                    <Text h1 style={ styles.h1 }>PORTAILhb DNE</Text>
+                    <TextInput style={ styles.text_input } placeholder='Pseudo' placeholderTextColor='#fff' />
+                    <TextInput style={ styles.text_input } placeholder='Mot de passe' placeholderTextColor='#fff' secureTextEntry={ true } />
+                    <Text style={ styles.button } onPress={() => {}}>Valider</Text>
+                </View>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#2b99ce'
+    },
     main_container: {
         marginTop: 50,
         flex: 1,
