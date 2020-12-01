@@ -10,15 +10,41 @@ const mockFailure = (value) => {
     });
 };
 
-export const login = (email, password, shouldSucceed = true) => {
-    console.log(email, password);
+const checkUser = (email, password) => {
+    let userList = getUserList();
 
-    if (!shouldSucceed) {
-        return mockFailure({ error: 500, message: 'Something went wrong!' });
+    console.log(userList);
+    for (let i = 0; i < userList.length; i++) {
+        if (userList[i].email == email && userList[i].password == password) {
+            return true;
+        }
+    }
+    return false;
+}
+
+const getUserList = () => {
+    return [
+        {
+            email: 'gianni.giudice@lacatholille.fr',
+            password: 'mdp123'
+        },
+        {
+            email: 'gautier.couture@lacatholille.fr',
+            password: 'mdp123'
+        }
+    ];
+}
+
+export const login = (email, password) => {
+
+    if (!checkUser(email, password)) {
+        return mockFailure({ error: 500, message: 'Identifiants invalides.' });
     }
 
     return mockSuccess({ auth_token: 'successful_fake_token' });
 };
+
+const getAuthenticationToken = () => 'successful_fake_token';
 
 export const getUsers = (shouldSucceed = true) => {
     const token = getAuthenticationToken();

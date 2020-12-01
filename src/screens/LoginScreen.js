@@ -1,27 +1,42 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
 import { login } from '../api/mock';
 
 const LoginScreen = ({ navigation }) => {
-    const [errorMessage, setErrorMessage] = useState('');
+        const [errorMessage, setErrorMessage] = useState('');
+        const [email, setEmail] = useState('');
+        const [password, setPassword] = useState('');
+
+
     const loginUser = () => {
         setErrorMessage('');
-        login('test@test.ca', 'password')
-            .then(() => {
-                navigation.navigate('Accueil');
-            })
-            .catch((err) => setErrorMessage(err.message));
     };
+    login(email, password)
+        .then(() => {
+            navigation.navigate('Accueil');
+        })
+        .catch((err) => setErrorMessage(err.message));
 
     return (
         <View style={styles.container}>
             <View style={ styles.main_container }>
                 <Text h1 style={ styles.h1 }>PORTAIL DNE</Text>
-                <TextInput style={ styles.text_input } placeholder='Pseudo' placeholderTextColor='#fff' />
-                <TextInput style={ styles.text_input } placeholder='Mot de passe' placeholderTextColor='#fff' secureTextEntry={ true } />
-                <Button title="Valider" style={ styles.button } onPress={loginUser}/>
+                {errorMessage ? <Text>{errorMessage}</Text> : null}
+                <TextInput
+                    style={ styles.text_input }
+                    placeholder='Adresse mail'
+                    placeholderTextColor='#fff'
+                    onChangeText={email => setEmail(email)}
+                />
+                <TextInput
+                    style={ styles.text_input }
+                    placeholder='Mot de passe'
+                    placeholderTextColor='#fff'
+                    onChangeText={password => setPassword(password)}
+                    secureTextEntry={ true }
+                />
+                <Text style={ styles.button } onPress={() => loginUser()}>Valider</Text>
             </View>
-            {errorMessage ? <Text>{errorMessage}</Text> : null}
         </View>
     );
 };
