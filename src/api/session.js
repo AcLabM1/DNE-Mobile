@@ -3,11 +3,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 export const getSessionData = async (property) => {
     try {
         const value = await AsyncStorage.getItem('@' + property);
+        console.log('inside function: ' + value);
         if (value !== null) {
             return value;
         }
     } catch (e) {
-        return null;
+        console.log(e);
     }
 };
 

@@ -17,8 +17,6 @@ const LoginScreen = ({ navigation }) => {
             .then(async (res) => {
                 await setSessionData('auth_token', res.auth_token);
                 await setSessionData('user_id', res.user_id);
-                console.log(getSessionData('auth_token'));
-                console.log(getSessionData('user_id'));
                 navigation.navigate('Accueil');
             })
             .catch((err) => setErrorMessage(err.message));

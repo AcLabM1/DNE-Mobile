@@ -49,8 +49,6 @@ export const login = (email, password) => {
 };
 
 export const getUserID = (email) => {
-    let id;
-
     switch (email) {
         case 'gianni.giudice@lacatholille.fr':
             return '1';
@@ -58,6 +56,28 @@ export const getUserID = (email) => {
             return '2';
         default:
             return '0';
+    }
+}
+
+export const getUserEmailByID = (id) => {
+    switch (id) {
+        case '1':
+            return 'gianni.giudice@lacatholille.fr';
+        case '2':
+            return 'gautier.couture@lacatholille.fr';
+        default:
+            return null;
+    }
+}
+
+export const getUsernameByID = (id) => {
+    switch (id) {
+        case '1':
+            return 'Gianni GIUDICE';
+        case '2':
+            return 'Gautier COUTURE';
+        default:
+            return null;
     }
 }
 
