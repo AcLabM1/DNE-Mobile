@@ -7,6 +7,14 @@ Celle-ci permet aux étudiants de visualiser leurs notes, leurs absences, leur p
 Pour les tuteurs, elle permettra de visualiser les cours que l'étudiant suit, d'intéragir avec lui ou ses responsables.
 Pour les responsables, elle permettra la saisie des notes, l'interaction avec l'étudiant / le tuteur, etc..
 
+## Maquettage
+
+Pour le développement de cette application nous avons réalisé des maquettes en amont via le logiciel Adobe XD, idéal pour réaliser des maquettes pour des applications mobiles. Des modifications ont été aportées à la version finale, cependant, ces maquettes ont été notre ligne de conduite pour le développement de l'application. Voici quelques images tirées de notre maquette :
+
+![alt text](https://ibb.co/0G0zgkd) ![alt text](https://ibb.co/zHh0bdy) ![alt text](https://ibb.co/zHh0bdy)
+
+Maquette complète disponible ci-après : https://xd.adobe.com/view/54702321-ff21-4b5b-bbce-e3e56ab45cb7-0123/?fullscreen
+
 ## Installation
 
 ### Prérequis
