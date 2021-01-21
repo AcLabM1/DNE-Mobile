@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Foundation from 'react-native-vector-icons/Foundation';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { getSessionData, setSessionData } from "../api/session";
 import { getUsernameByID } from "../api/mock";
 
@@ -50,39 +52,51 @@ const HomeScreen = ({ navigation }) => {
     getValue('user_id');
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Bonjour {getUsernameByID(userID)}</Text>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
+            <View style={{left:120, bottom:40}}>
             <Button title="Déconnexion" onPress={() => logout()} />
+            </View>
             <View style={{ flexDirection: "row", paddingBottom:50 }}>
                 <View style={{paddingRight:50}}>
                     <TouchableOpacity style={styles.circle_button} onPress={() => gotoPlanning()}>
-                        <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
+                        <MaterialIcons name={"schedule"}  size={60} color="#01a699" />
                     </TouchableOpacity>
-                    <Text style={{left:20}}>Planning</Text>
+                    <Text style={{left:23}}>Planning</Text>
                 </View>
-                <TouchableOpacity style={styles.circle_button} onPress={() => gotoAbsence()}>
-                    <Feather name={"settings"}  size={60} color="#01a699" />
-                </TouchableOpacity>
+                <View style={{flexDirection: "column"}}>
+                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoAbsence()}>
+                        <AntDesign name={"question"}  size={60} color="#01a699" />
+                    </TouchableOpacity>
+                    <Text style={{left:18}}> Absences</Text>
+                </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom:50 }}>
                 <View style={{paddingRight:50}}>
                     <TouchableOpacity style={styles.circle_button} onPress={() => gotoMarks()}>
-                        <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
+                        <Foundation name={"clipboard-notes"}  size={60} color="#01a699" />
                     </TouchableOpacity>
+                    <Text style={{left:30}}>Notes</Text>
                 </View>
-                <TouchableOpacity style={styles.circle_button} onPress={() => gotoInfo()}>
-                    <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
-                </TouchableOpacity>
+                <View style={{flexDirection: "column"}}>
+                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoInfo()}>
+                        <Feather name={"info"}  size={60} color="#01a699" />
+                    </TouchableOpacity>
+                    <Text style={{left:14}}>Informations</Text>
+                </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom:50 }}>
                 <View style={{paddingRight:50}}>
                     <TouchableOpacity style={styles.circle_button} onPress={() => gotoServices()}>
-                        <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
+                        <AntDesign name={"customerservice"}  size={60} color="#01a699" />
                     </TouchableOpacity>
+                    <Text style={{left:23}}>Services</Text>
                 </View>
-                <TouchableOpacity style={styles.circle_button} onPress={() => gotoContact()}>
-                    <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
-                </TouchableOpacity>
+                <View style={{flexDirection: "column"}}>
+                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoContact()}>
+                        <AntDesign name={"contacts"}  size={60} color="#01a699" />
+                    </TouchableOpacity>
+                    <Text style={{left:23}}>Contacts</Text>
+                </View>
             </View>
         </View>
     );
