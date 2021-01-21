@@ -53,7 +53,7 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
-            <View style={{left:120, bottom:40}}>
+            <View style={{left:120, paddingBottom:10}}>
             <Button title="Déconnexion" onPress={() => logout()} />
             </View>
             <View style={{ flexDirection: "row", paddingBottom:50 }}>
