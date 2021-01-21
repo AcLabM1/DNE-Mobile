@@ -21,7 +21,7 @@ const PlanningScreen = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Bonjour {getUsernameByID(userID)}</Text>
+            <Text>On a pas l'API, lol</Text>
         </View>
     );
 };
