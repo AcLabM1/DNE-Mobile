@@ -15,6 +15,30 @@ const HomeScreen = ({ navigation }) => {
         navigation.navigate('Connexion');
     };
 
+    const gotoPlanning = async () => {
+        navigation.navigate('Planning');
+    };
+
+    const gotoAbsence = async () => {
+        navigation.navigate('Absences');
+    };
+
+    const gotoMarks = async () => {
+        navigation.navigate('Notes');
+    };
+
+    const gotoInfo = async () => {
+        navigation.navigate('Informations');
+    };
+
+    const gotoServices = async () => {
+        navigation.navigate('Services');
+    };
+
+    const gotoContact = async () => {
+        navigation.navigate('Contacts');
+    };
+
     const getValue = (property) => {
         getSessionData(property).then((res) => {
             setUserID(res);
@@ -31,32 +55,32 @@ const HomeScreen = ({ navigation }) => {
             <Button title="Déconnexion" onPress={() => logout()} />
             <View style={{ flexDirection: "row", paddingBottom:50 }}>
                 <View style={{paddingRight:50}}>
-                    <TouchableOpacity style={styles.circle_button}>
+                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoPlanning()}>
                         <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
                     </TouchableOpacity>
                     <Text style={{left:20}}>Planning</Text>
                 </View>
-                <TouchableOpacity style={styles.circle_button}>
+                <TouchableOpacity style={styles.circle_button} onPress={() => gotoAbsence()}>
                     <Feather name={"settings"}  size={60} color="#01a699" />
                 </TouchableOpacity>
             </View>
             <View style={{ flexDirection: "row", paddingBottom:50 }}>
                 <View style={{paddingRight:50}}>
-                    <TouchableOpacity style={styles.circle_button}>
+                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoMarks()}>
                         <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.circle_button}>
+                <TouchableOpacity style={styles.circle_button} onPress={() => gotoInfo()}>
                     <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
                 </TouchableOpacity>
             </View>
             <View style={{ flexDirection: "row", paddingBottom:50 }}>
                 <View style={{paddingRight:50}}>
-                    <TouchableOpacity style={styles.circle_button}>
+                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoServices()}>
                         <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.circle_button}>
+                <TouchableOpacity style={styles.circle_button} onPress={() => gotoContact()}>
                     <FontAwesome name={"chevron-right"}  size={30} color="#01a699" />
                 </TouchableOpacity>
             </View>
