@@ -52,51 +52,52 @@ const HomeScreen = ({ navigation }) => {
     getValue('user_id');
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
-            <View style={{left:120, paddingBottom:10}}>
-            <Button title="Déconnexion" onPress={() => logout()} />
-            </View>
-            <View style={{ flexDirection: "row", paddingBottom:50 }}>
-                <View style={{paddingRight:50}}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', paddingTop: 50}}>
+            <View style={{ flexDirection: "row", paddingBottom: 50 }}>
+                <View style={{ paddingRight: 50 }}>
                     <TouchableOpacity style={styles.circle_button} onPress={() => gotoPlanning()}>
-                        <MaterialIcons name={"schedule"}  size={60} color="#01a699" />
+                        <MaterialIcons name={ "schedule" }  size={ 60 } color="#2b99ce" />
                     </TouchableOpacity>
-                    <Text style={{left:23}}>Planning</Text>
+                    <Text style={{ left: 23 }}>Planning</Text>
                 </View>
-                <View style={{flexDirection: "column"}}>
-                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoAbsence()}>
-                        <AntDesign name={"question"}  size={60} color="#01a699" />
+                <View style={{ flexDirection: "column" }}>
+                    <TouchableOpacity style={ styles.circle_button } onPress={() => gotoAbsence()}>
+                        <AntDesign name={ "question" }  size={ 60 } color="#2b99ce" />
                     </TouchableOpacity>
-                    <Text style={{left:18}}> Absences</Text>
-                </View>
-            </View>
-            <View style={{ flexDirection: "row", paddingBottom:50 }}>
-                <View style={{paddingRight:50}}>
-                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoMarks()}>
-                        <Foundation name={"clipboard-notes"}  size={60} color="#01a699" />
-                    </TouchableOpacity>
-                    <Text style={{left:30}}>Notes</Text>
-                </View>
-                <View style={{flexDirection: "column"}}>
-                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoInfo()}>
-                        <Feather name={"info"}  size={60} color="#01a699" />
-                    </TouchableOpacity>
-                    <Text style={{left:14}}>Informations</Text>
+                    <Text style={{ left: 18 }}> Absences</Text>
                 </View>
             </View>
-            <View style={{ flexDirection: "row", paddingBottom:50 }}>
-                <View style={{paddingRight:50}}>
-                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoServices()}>
-                        <AntDesign name={"customerservice"}  size={60} color="#01a699" />
+            <View style={{ flexDirection: "row", paddingBottom: 50 }}>
+                <View style={{ paddingRight: 50 }}>
+                    <TouchableOpacity style={ styles.circle_button } onPress={() => gotoMarks()}>
+                        <Foundation name={ "clipboard-notes" }  size={ 60 } color="#2b99ce" />
                     </TouchableOpacity>
-                    <Text style={{left:23}}>Services</Text>
+                    <Text style={{ left: 30 }}>Notes</Text>
                 </View>
-                <View style={{flexDirection: "column"}}>
-                    <TouchableOpacity style={styles.circle_button} onPress={() => gotoContact()}>
-                        <AntDesign name={"contacts"}  size={60} color="#01a699" />
+                <View style={{ flexDirection: "column" }}>
+                    <TouchableOpacity style={ styles.circle_button } onPress={() => gotoInfo()}>
+                        <Feather name={ "info" }  size={ 60 } color="#2b99ce" />
                     </TouchableOpacity>
-                    <Text style={{left:23}}>Contacts</Text>
+                    <Text style={{ left: 14 }}>Informations</Text>
                 </View>
+            </View>
+            <View style={{ flexDirection: "row", paddingBottom: 50 }}>
+                <View style={{ paddingRight: 50 }}>
+                    <TouchableOpacity style={ styles.circle_button } onPress={() => gotoServices()}>
+                        <AntDesign name={ "customerservice" }  size={ 60 } color="#2b99ce" />
+                    </TouchableOpacity>
+                    <Text style={{ left: 23 }}>Services</Text>
+                </View>
+                <View style={{ flexDirection: "column" }}>
+                    <TouchableOpacity style={ styles.circle_button } onPress={() => gotoContact()}>
+                        <AntDesign name={ "contacts" }  size={ 60 } color="#2b99ce" />
+                    </TouchableOpacity>
+                    <Text style={{ left: 23 }}>Contacts</Text>
+                </View>
+            </View>
+
+            <View style={{ width: "100%", position: 'absolute', bottom: 0 }}>
+                <Button title="Déconnexion" color="#2b99ce" onPress={() => logout()} />
             </View>
         </View>
     );
