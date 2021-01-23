@@ -20,64 +20,64 @@ const MarksScreen = ({ navigation }) => {
     getValue('user_id');
 
     return (
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <View style={styles.info_titles}>
-                <Text style={styles.title_content}>Cours</Text>
-                <Text style={styles.title2_content}>Coef.</Text>
-                <Text style={styles.title2_content}>Moy.</Text>
-                <Text style={styles.title2_content}>Note</Text>
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <View style={ styles.info_titles }>
+                <Text style={ styles.title_content }>Cours</Text>
+                <Text style={ styles.title2_content }>Coef.</Text>
+                <Text style={ styles.title2_content }>Moy.</Text>
+                <Text style={ styles.title2_content }>Note</Text>
             </View>
-            <View style={styles.info_marks}>
-                <Text style={styles.marks_content}>Anglais</Text>
-                <Text style={styles.marks2_content}>*coef*</Text>
-                <Text style={styles.marks2_content}>*moy*</Text>
-                <Text style={styles.marks2_content}>*note*</Text>
+            <View style={ styles.info_marks }>
+                <Text style={ styles.marks_content }>Anglais</Text>
+                <Text style={ styles.marks2_content }>*coef*</Text>
+                <Text style={ styles.marks2_content }>*moy*</Text>
+                <Text style={ styles.marks2_content }>*note*</Text>
             </View>
-            <View style={styles.info_marks}>
-                <Text style={styles.marks_content}>Programmation par Composant</Text>
-                <Text style={styles.marks2_content}>*coef*</Text>
-                <Text style={styles.marks2_content}>*moy*</Text>
-                <Text style={styles.marks2_content}>*note*</Text>
+            <View style={ styles.info_marks }>
+                <Text style={ styles.marks_content }>Programmation par Composant</Text>
+                <Text style={ styles.marks2_content }>*coef*</Text>
+                <Text style={ styles.marks2_content }>*moy*</Text>
+                <Text style={ styles.marks2_content }>*note*</Text>
             </View>
-            <View style={styles.info_marks}>
-                <Text style={styles.marks_content}>Programmation fonctionelle</Text>
-                <Text style={styles.marks2_content}>*coef*</Text>
-                <Text style={styles.marks2_content}>*moy*</Text>
-                <Text style={styles.marks2_content}>*note*</Text>
+            <View style={ styles.info_marks }>
+                <Text style={ styles.marks_content }>Programmation fonctionelle</Text>
+                <Text style={ styles.marks2_content }>*coef*</Text>
+                <Text style={ styles.marks2_content }>*moy*</Text>
+                <Text style={ styles.marks2_content }>*note*</Text>
             </View>
-            <View style={styles.info_marks}>
-                <Text style={styles.marks_content}>Cybersécurité</Text>
-                <Text style={styles.marks2_content}>*coef*</Text>
-                <Text style={styles.marks2_content}>*moy*</Text>
-                <Text style={styles.marks2_content}>*note*</Text>
+            <View style={ styles.info_marks }>
+                <Text style={ styles.marks_content }>Cybersécurité</Text>
+                <Text style={ styles.marks2_content }>*coef*</Text>
+                <Text style={ styles.marks2_content }>*moy*</Text>
+                <Text style={ styles.marks2_content }>*note*</Text>
             </View>
-            <View style={styles.info_marks}>
-                <Text style={styles.marks_content}>IA</Text>
-                <Text style={styles.marks2_content}>*coef*</Text>
-                <Text style={styles.marks2_content}>*moy*</Text>
-                <Text style={styles.marks2_content}>*note*</Text>
+            <View style={ styles.info_marks }>
+                <Text style={ styles.marks_content }>IA</Text>
+                <Text style={ styles.marks2_content }>*coef*</Text>
+                <Text style={ styles.marks2_content }>*moy*</Text>
+                <Text style={ styles.marks2_content }>*note*</Text>
             </View>
-            <View style={styles.info_marks}>
-                <Text style={styles.marks_content}>Droit & Données</Text>
-                <Text style={styles.marks2_content}>*coef*</Text>
-                <Text style={styles.marks2_content}>*moy*</Text>
-                <Text style={styles.marks2_content}>*note*</Text>
+            <View style={ styles.info_marks }>
+                <Text style={ styles.marks_content }>Droit & Données</Text>
+                <Text style={ styles.marks2_content }>*coef*</Text>
+                <Text style={ styles.marks2_content }>*moy*</Text>
+                <Text style={ styles.marks2_content }>*note*</Text>
             </View>
-            <View style={styles.info_marks}>
-                <Text style={styles.marks_content}>Ac'Lab</Text>
-                <Text style={styles.marks2_content}>*coef*</Text>
-                <Text style={styles.marks2_content}>*moy*</Text>
-                <Text style={styles.marks2_content}>*note*</Text>
+            <View style={ styles.info_marks }>
+                <Text style={ styles.marks_content }>Ac'Lab</Text>
+                <Text style={ styles.marks2_content }>*coef*</Text>
+                <Text style={ styles.marks2_content }>*moy*</Text>
+                <Text style={ styles.marks2_content }>*note*</Text>
             </View>
         </View>
-);
+    );
 };
 
 const styles = StyleSheet.create({
 info_marks: {
     marginTop: 10,
     flexDirection: 'row',
-    backgroundColor: 'rgba(43,153,206,0.2)',
+    backgroundColor: 'rgba(43, 153, 206, 0.1)',
     width: '90%',
     height: 45,
     alignItems: 'center',
