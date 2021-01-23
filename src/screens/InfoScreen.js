@@ -20,14 +20,83 @@ const InfoScreen = ({ navigation }) => {
     getValue('user_id');
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Bonjour {getUsernameByID(userID)}</Text>
+        <View>
+            <View style={{flexDirection: "row", paddingBottom:5}}>
+              <View style={styles.info_titles}>
+                <Text style={styles.contact_content}>NOM</Text>
+              </View>
+              <View style={styles.info_boxes}>
+                <Text style={styles.info_content}>*requete API*</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: "row", paddingBottom:5}}>
+              <View style={styles.info_titles}>
+                <Text style={styles.contact_content}>PRENOM</Text>
+              </View>
+              <View style={styles.info_boxes}>
+                <Text style={styles.info_content}>*requete API*</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: "row", paddingBottom:5}}>
+              <View style={styles.info_titles}>
+                <Text style={styles.contact_content}>DATE DE{"\n"}NAISSANCE</Text>
+              </View>
+              <View style={styles.info_boxes}>
+                <Text style={styles.info_content}>*requete API*</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: "row", paddingBottom:5}}>
+              <View style={styles.info_titles}>
+                <Text style={styles.contact_content}>FORMATION</Text>
+              </View>
+              <View style={styles.info_boxes}>
+                <Text style={styles.info_content}>*requete API*</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: "row", paddingBottom:5}}>
+              <View style={styles.info_titles}>
+                <Text style={styles.contact_content}>INSCRIT DEPUIS</Text>
+              </View>
+              <View style={styles.info_boxes}>
+                <Text style={styles.info_content}>*requete API*</Text>
+              </View>
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    info_titles: {
+        marginTop: 5,
+        flexDirection: "column",
+        marginLeft:10,
+        backgroundColor: 'rgba(33, 172, 205, 1)',
+        width: '30%',
+        height: 60,
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 5
+    },
 
+    info_boxes: {
+      marginTop: 5,
+      flexDirection: "column",
+      marginRight: 10,
+      borderColor: 'rgba(33, 172, 205, 1)',
+      borderWidth : 1,
+      width: '65%',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+
+    info_content: {
+      color: 'rgba(33, 172, 205, 1)'
+    },
+
+    contact_content: {
+      color: '#ffffff'
+    }
 })
+
 
 export default InfoScreen;
