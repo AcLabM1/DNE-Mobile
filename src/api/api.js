@@ -1,4 +1,5 @@
-const URL = 'http://192.168.0.31:8080';
+const URL = 'http://192.168.0.31';
+const PORT = '8080';
 
 const mockSuccess = (value) => {
     return new Promise((resolve) => {
@@ -8,7 +9,7 @@ const mockSuccess = (value) => {
 
 export const login = async (email, password) => {
     let id = 0;
-    await fetch(URL + '/account/login?password=' + password + '&username=' + email, {
+    await fetch(URL + ':' + PORT + '/account/login?password=' + password + '&username=' + email, {
         method: 'POST',
         headers: {
             'Accept': '*/*',
