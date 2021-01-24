@@ -59,11 +59,11 @@ const HomeScreen = ({ navigation }) => {
     };
 
     getValue('user_id');
-    getFullName(userID);
+    getFullName();
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', paddingTop: 10}}>
-            <Text>Hello {full_name}</Text>
+            <Text>Hello { full_name }</Text>
             <View style={{ flexDirection: "row", paddingBottom: 50 }}>
                 <View style={{ paddingRight: 50 }}>
                     <TouchableOpacity style={styles.circle_button} onPress={() => gotoPlanning()}>

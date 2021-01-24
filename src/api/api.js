@@ -31,7 +31,7 @@ export const login = async (email, password) => {
 
 export const getUserFullName = async (user_id) => {
     let full_name = '';
-    await fetch(URL + '/etudiants/' + user_id, {
+    await fetch(URL + ':' + PORT + '/etudiants/' + user_id, {
         method: 'GET',
         headers: {
             'Accept': '*/*',
