@@ -5,11 +5,20 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { getSessionData, setSessionData } from "../api/session";
+import { getUserFullName } from "../api/api";
 import { getUsernameByID } from "../api/mock";
 
 
 const HomeScreen = ({ navigation }) => {
     const [userID, setUserID] = useState('0');
+    const [full_name, setFullName] = useState('');
+
+    const getFullName = async () => {
+        getUserFullName(userID).then(async (res) => {
+            setFullName(res);
+        }).catch((err) => {});
+    }
+
 
     const logout = async () => {
         await setSessionData('auth_token', '');
@@ -50,9 +59,11 @@ const HomeScreen = ({ navigation }) => {
     };
 
     getValue('user_id');
+    getFullName(userID);
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', paddingTop: 50}}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', paddingTop: 10}}>
+            <Text>Hello {full_name}</Text>
             <View style={{ flexDirection: "row", paddingBottom: 50 }}>
                 <View style={{ paddingRight: 50 }}>
                     <TouchableOpacity style={styles.circle_button} onPress={() => gotoPlanning()}>
@@ -105,14 +116,14 @@ const HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     circle_button: {
-        borderWidth:1,
-        borderColor:'rgba(0,0,0,0.2)',
-        alignItems:'center',
-        justifyContent:'center',
-        width:100,
-        height:100,
-        backgroundColor:'#fff',
-        borderRadius:50
+        borderWidth: 1,
+        borderColor: 'rgba(0,0,0,0.2)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 100,
+        height: 100,
+        backgroundColor: '#fff',
+        borderRadius: 50
     }
 })
 

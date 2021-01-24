@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
-import { login } from '../api/mock';
+import { login } from '../api/api';
 import {setToken} from "../api/token";
 import {getSessionData, setSessionData} from "../api/session";
 
@@ -13,10 +13,10 @@ const LoginScreen = ({ navigation }) => {
     const loginUser = async () => {
         setErrorMessage('');
 
-        login(email, password)
+            login(email, password)
             .then(async (res) => {
                 await setSessionData('auth_token', res.auth_token);
-                await setSessionData('user_id', res.user_id);
+                await setSessionData('user_id', res.user_id.toString());
                 navigation.navigate('Accueil');
             })
             .catch((err) => setErrorMessage(err.message));
