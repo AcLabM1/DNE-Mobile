@@ -40,6 +40,22 @@ Celle-ci est disponible directement sur le **Play Store** ou l'**Apple Store**.
 
 **/!\ ATTENTION :** Il faudra que votre ordinateur et votre smartphone soient connectés sur le même réseau Wifi pour pouvoir voir les modifications de votre application en temps réel sur votre smartphone.
 
+#### Intégration de l'API
+
+Pour pouvoir tester l'application, il faudra avoir au préalable **installé l'API DNE** disponible ici : https://github.com/AcLabM1/DNE-API (son installation est expliquée dans le README de l'API)
+
+Une fois l'API installée et lancée (via docker par exemple), il faudra **configurer l'adresse IP** pour connecter l'application mobile à l'API qui tourne en local.
+
+Pour trouver l'IP nécessaire, il faudra lancer la commande suivante dans un terminal :
+
+`ifconfig` (pour Linux / MAC)
+
+`ipconfig` (pour Windows)
+
+Il faudra ensuite récupérer l'adresse **IP privée** (par exemple 192.168.0.31) de votre ordinateur. (tutoriel pour récupérer l'adresse IP voulue : https://fr.wikihow.com/v%C3%A9rifier-son-adresse-IP-sur-Linux)
+
+Vous pourrez alors modifier la variable **URL** dans le fichier **/src/api/api.js**.
+
 ### Installation de l'application
 
 Pour récupérer les sources du projet, veuillez lancer cette commande :
