@@ -3,6 +3,7 @@ import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import { getSessionData, setSessionData } from "../api/session";
 import { getUsernameByID } from "../api/mock";
 import { getUserInfo } from '../api/api';
+import Moment from 'moment';
 
 const InfoScreen = ({ navigation }) => {
     const [userID, setUserID] = useState('0');
@@ -12,6 +13,8 @@ const InfoScreen = ({ navigation }) => {
     const [mail_perso, setMailPerso] = useState('');
     const [phone, setPhone] = useState('');
     const [mail_univ, setMailUniv] = useState('');
+
+    Moment.locale('fr');
 
 
     const getValue = (property) => {
@@ -23,15 +26,15 @@ const InfoScreen = ({ navigation }) => {
     };
 
   const getInfo = async () => {
-    getUserInfo(userID).then(async (res) => {
-        setFirstName(res[0]);
-        setLastName(res[1]);
-        setDateofBirth(res[2]);
-        setMailPerso(res[3]);
-        setPhone(res[4]);
-        setMailUniv(res[5]);
-    }).catch((err) => {});
-};
+        getUserInfo(userID).then(async (res) => {
+            setFirstName(res[0]);
+            setLastName(res[1]);
+            setDateofBirth(res[2]);
+            setMailPerso(res[3]);
+            setPhone(res[4]);
+            setMailUniv(res[5]);
+        }).catch((err) => {});
+    };
 
     getValue('user_id');
     getInfo();
@@ -59,7 +62,7 @@ const InfoScreen = ({ navigation }) => {
                 <Text style={ styles.contact_content }>DATE DE{"\n"}NAISSANCE</Text>
               </View>
               <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>{ date_of_birth }</Text>
+                <Text style={ styles.info_content }>{Moment(date_of_birth).format('d MMMM yyyy')}</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>

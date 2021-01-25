@@ -1,4 +1,4 @@
-const URL = 'http://192.168.1.17';
+const URL = 'http://192.168.43.19';
 const PORT = '8080';
 
 const mockSuccess = (value) => {
@@ -49,12 +49,12 @@ export const getUserFullName = async (user_id) => {
     }
 
 export const getUserInfo = async (user_id) => {
-    let first_name= '';
-    let last_name= '';
-    let date_of_birth= '';
-    let mail_perso= '';
-    let phone= '';
-    let mail_univ= '';
+    let first_name = '';
+    let last_name = '';
+    let date_of_birth = '';
+    let mail_perso = '';
+    let phone = '';
+    let mail_univ = '';
     await fetch(URL + ':' + PORT + '/etudiants/' + user_id, {
         method: 'GET',
         headers: {
