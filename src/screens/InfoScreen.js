@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { getSessionData, setSessionData } from "../api/session";
 import { getUsernameByID } from "../api/mock";
+import { getUserInfo } from '../api/api';
 
 const InfoScreen = ({ navigation }) => {
     const [userID, setUserID] = useState('0');
+    const [first_name, setFirstName] = useState('');
+    const [last_name, setLastName] = useState('');
+    const [date_of_birth, setDateofBirth] = useState('');
+    const [mail_perso, setMailPerso] = useState('');
+    const [phone, setPhone] = useState('');
+    const [mail_univ, setMailUniv] = useState('');
 
 
     const getValue = (property) => {
@@ -17,7 +22,19 @@ const InfoScreen = ({ navigation }) => {
         return null;
     };
 
+  const getInfo = async () => {
+    getUserInfo(userID).then(async (res) => {
+        setFirstName(res[0]);
+        setLastName(res[1]);
+        setDateofBirth(res[2]);
+        setMailPerso(res[3]);
+        setPhone(res[4]);
+        setMailUniv(res[5]);
+    }).catch((err) => {});
+};
+
     getValue('user_id');
+    getInfo();
 
     return (
         <View>
@@ -26,7 +43,7 @@ const InfoScreen = ({ navigation }) => {
                 <Text style={ styles.contact_content }>NOM</Text>
               </View>
               <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>*requete API*</Text>
+                <Text style={ styles.info_content }>{ last_name }</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>
@@ -34,7 +51,7 @@ const InfoScreen = ({ navigation }) => {
                 <Text style={ styles.contact_content }>PRENOM</Text>
               </View>
               <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>*requete API*</Text>
+                <Text style={ styles.info_content }>{ first_name }</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>
@@ -42,7 +59,7 @@ const InfoScreen = ({ navigation }) => {
                 <Text style={ styles.contact_content }>DATE DE{"\n"}NAISSANCE</Text>
               </View>
               <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>*requete API*</Text>
+                <Text style={ styles.info_content }>{ date_of_birth }</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>
@@ -50,7 +67,7 @@ const InfoScreen = ({ navigation }) => {
                 <Text style={ styles.contact_content }>TELEPHONE</Text>
               </View>
               <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>*requete API*</Text>
+                <Text style={ styles.info_content }>{ phone }</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>
@@ -58,7 +75,7 @@ const InfoScreen = ({ navigation }) => {
                 <Text style={ styles.contact_content }>EMAIL{"\n"}PERSONNEL</Text>
               </View>
               <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>*requete API*</Text>
+                <Text style={ styles.info_content }>{ mail_perso }</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>
@@ -66,15 +83,7 @@ const InfoScreen = ({ navigation }) => {
                 <Text style={ styles.contact_content }>EMAIL{"\n"}UNIVERSITE</Text>
               </View>
               <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>*requete API*</Text>
-              </View>
-            </View>
-            <View style={{ flexDirection: "row", paddingBottom: 5 }}>
-              <View style={ styles.info_titles }>
-                <Text style={ styles.contact_content }>STATUT</Text>
-              </View>
-              <View style={ styles.info_boxes }>
-                <Text style={ styles.info_content }>*requete API*</Text>
+                <Text style={ styles.info_content }>{ mail_univ }</Text>
               </View>
             </View>
         </View>

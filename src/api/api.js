@@ -1,4 +1,4 @@
-const URL = 'http://192.168.0.31';
+const URL = 'http://192.168.1.17';
 const PORT = '8080';
 
 const mockSuccess = (value) => {
@@ -46,4 +46,33 @@ export const getUserFullName = async (user_id) => {
             return error;
         });
     return full_name;
+    }
+
+export const getUserInfo = async (user_id) => {
+    let first_name= '';
+    let last_name= '';
+    let date_of_birth= '';
+    let mail_perso= '';
+    let phone= '';
+    let mail_univ= '';
+    await fetch(URL + ':' + PORT + '/etudiants/' + user_id, {
+        method: 'GET',
+        headers: {
+            'Accept': '*/*',
+            'Content-Type': 'application/json',
+            'Connection': 'keep-alive'
+        },
+    }).then((res) => res.json())
+        .then((resjson) => {
+            first_name = resjson.prenom;
+            last_name = resjson.nom;
+            date_of_birth = resjson.dateNaissance;
+            mail_perso = resjson.emailPersonnel;
+            phone = resjson.telephonePersonnel;
+            mail_univ = resjson.emailUniv;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return [first_name, last_name, date_of_birth, mail_perso, phone, mail_univ];
 }
