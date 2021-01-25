@@ -47,7 +47,7 @@ const InfoScreen = ({ navigation }) => {
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>
               <View style={ styles.info_titles }>
-                <Text style={ styles.contact_content }>FORMATION</Text>
+                <Text style={ styles.contact_content }>TELEPHONE</Text>
               </View>
               <View style={ styles.info_boxes }>
                 <Text style={ styles.info_content }>*requete API*</Text>
@@ -55,7 +55,23 @@ const InfoScreen = ({ navigation }) => {
             </View>
             <View style={{ flexDirection: "row", paddingBottom: 5 }}>
               <View style={ styles.info_titles }>
-                <Text style={ styles.contact_content }>INSCRIT DEPUIS</Text>
+                <Text style={ styles.contact_content }>EMAIL{"\n"}PERSONNEL</Text>
+              </View>
+              <View style={ styles.info_boxes }>
+                <Text style={ styles.info_content }>*requete API*</Text>
+              </View>
+            </View>
+            <View style={{ flexDirection: "row", paddingBottom: 5 }}>
+              <View style={ styles.info_titles }>
+                <Text style={ styles.contact_content }>EMAIL{"\n"}UNIVERSITE</Text>
+              </View>
+              <View style={ styles.info_boxes }>
+                <Text style={ styles.info_content }>*requete API*</Text>
+              </View>
+            </View>
+            <View style={{ flexDirection: "row", paddingBottom: 5 }}>
+              <View style={ styles.info_titles }>
+                <Text style={ styles.contact_content }>STATUT</Text>
               </View>
               <View style={ styles.info_boxes }>
                 <Text style={ styles.info_content }>*requete API*</Text>
