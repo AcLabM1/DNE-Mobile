@@ -1,4 +1,4 @@
-const URL = 'http://192.168.43.19';
+const URL = 'http://192.168.1.13';
 const PORT = '8080';
 
 const mockSuccess = (value) => {
@@ -46,7 +46,7 @@ export const getUserFullName = async (user_id) => {
             return error;
         });
     return full_name;
-    }
+  };
 
 export const getUserInfo = async (user_id) => {
     let first_name = '';
@@ -75,4 +75,43 @@ export const getUserInfo = async (user_id) => {
             return error;
         });
     return [first_name, last_name, date_of_birth, mail_perso, phone, mail_univ];
-}
+};
+
+export const getCoeffs = async() => {
+    let cyber = '';
+    let ia = '';
+    let devops = '';
+    let agile = '';
+    let fonctionelle = '';
+    let composant = '';
+    let ux = '';
+    let aclab = '';
+    let droit = '';
+    let anglais = '';
+    let entreprise = '';
+    await fetch(URL + ':' + PORT + '/matieres', {
+        method: 'GET',
+        headers: {
+            'Accept': '*/*',
+            'Content-Type': 'application/json',
+            'Connection': 'keep-alive'
+        },
+    }).then((res) => res.json())
+        .then((resjson) => {
+          cyber = resjson[0].creditECTS;
+          ia = resjson[1].creditECTS;
+          devops = resjson[2].creditECTS;
+          agile = resjson[3].creditECTS;
+          fonctionelle = resjson[4].creditECTS;
+          composant = resjson[5].creditECTS;
+          ux = resjson[6].creditECTS;
+          aclab = resjson[7].creditECTS;
+          droit = resjson[8].creditECTS;
+          anglais = resjson[9].creditECTS;
+          entreprise = resjson[10].creditECTS;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return [cyber, ia, devops, agile, fonctionelle, composant, ux, aclab, droit, anglais, entreprise];
+    }
