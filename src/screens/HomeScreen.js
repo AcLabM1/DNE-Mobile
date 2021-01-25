@@ -62,8 +62,10 @@ const HomeScreen = ({ navigation }) => {
     getFullName();
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', paddingTop: 10}}>
-            <Text>Hello { full_name }</Text>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 10}}>
+            <View style={{ width: "100%", position: 'absolute', top: 5, left: 5 }}>
+                <Text>Connecté en tant que { full_name }</Text>
+            </View>
             <View style={{ flexDirection: "row", paddingBottom: 50 }}>
                 <View style={{ paddingRight: 50 }}>
                     <TouchableOpacity style={styles.circle_button} onPress={() => gotoPlanning()}>
