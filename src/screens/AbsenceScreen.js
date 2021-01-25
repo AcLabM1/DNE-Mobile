@@ -1,23 +1,50 @@
-import React, { useState } from 'react'
+import React, {useRef, useState} from 'react'
 import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { getSessionData, setSessionData } from "../api/session";
-import { getUsernameByID } from "../api/mock";
+import {getUserFullName} from "../api/api";
+import { getAbsences } from "../api/api";
+import { getSession } from "../api/api";
+import { useEffect } from "react";
+import Moment from 'moment';
 
 const AbsenceScreen = ({ navigation }) => {
     const [userID, setUserID] = useState('0');
+    const [view, setView] = useState([]);
+    const done = useRef(false);
 
-
-    const getValue = (property) => {
-        getSessionData(property).then((res) => {
-            setUserID(res);
-            return res;
-        });
-        return null;
+    const getUserID = async () => {
+        return getSessionData('user_id');
     };
 
-    getValue('user_id');
+    const getAllAbsences = async (user_id) => {
+        getAbsences(user_id).then((res) => {
+            let sessions = [];
+            for (let i = 0; i < res.length; i++) {
+                getSession(res[i].idSession).then((session) => {
+                    sessions.push(
+                        <View style={ styles.absence } key = {i}>
+                            <Text style={ styles.value }>{ Moment(session.dateHeure).format('l') }</Text>
+                            <Text style={ styles.value }>
+                                NOM MATIERE{'\n'}
+                                { session.salle }
+                            </Text>
+                            <Text style={ styles.value }>{ session.duree }h</Text>
+                        </View>
+                    );
+                    setView(sessions);
+                });
+            }
+        }).catch((err) => {});
+    };
+
+    if (!done.current) {
+        getUserID().then((res) => {
+            setUserID(res);
+            getAllAbsences(res);
+        });
+        done.current = true;
+    }
+
 
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -26,22 +53,7 @@ const AbsenceScreen = ({ navigation }) => {
                 <Text style={ styles.title }>Cours</Text>
                 <Text style={ styles.title }>Durée</Text>
             </View>
-            <View style={ styles.absence }>
-                <Text style={ styles.value }>15/12</Text>
-                <Text style={ styles.value }>
-                    Cybersécurité{'\n'}
-                    Salle A41
-                </Text>
-                <Text style={ styles.value }>4h</Text>
-            </View>
-            <View style={ styles.absence }>
-                <Text style={ styles.value }>10/12</Text>
-                <Text style={ styles.value }>
-                    IA{'\n'}
-                    Distanciel
-                </Text>
-                <Text style={ styles.value }>2h</Text>
-            </View>
+            { view }
         </View>
     );
 };

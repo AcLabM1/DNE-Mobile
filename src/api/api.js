@@ -1,4 +1,6 @@
-const URL = 'http://192.168.1.13';
+import {abs} from "react-native-reanimated";
+
+const URL = 'http://192.168.43.19';
 const PORT = '8080';
 
 const mockSuccess = (value) => {
@@ -114,4 +116,43 @@ export const getCoeffs = async() => {
             return error;
         });
     return [cyber, ia, devops, agile, fonctionelle, composant, ux, aclab, droit, anglais, entreprise];
-    }
+}
+
+export const getAbsences = async (user_id) => {
+    let absences = '';
+    await fetch(URL + ':' + PORT + '/presence-session/etudiant/absences/' + user_id, {
+        method: 'GET',
+        headers: {
+            'Accept': '*/*',
+            'Content-Type': 'application/json',
+            'Connection': 'keep-alive'
+        },
+    }).then((res) => res.json())
+        .then((resjson) => {
+            absences = resjson;
+        })
+        .catch((error) => {
+            return error;
+        });
+
+    return absences;
+};
+
+export const getSession = async (session_id) => {
+    let session = {};
+    await fetch(URL + ':' + PORT + '/sessions/' + session_id, {
+        method: 'GET',
+        headers: {
+            'Accept': '*/*',
+            'Content-Type': 'application/json',
+            'Connection': 'keep-alive'
+        },
+    }).then((res) => res.json())
+        .then((resjson) => {
+            session = resjson;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return session;
+};
