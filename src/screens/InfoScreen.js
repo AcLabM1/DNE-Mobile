@@ -74,8 +74,7 @@ const styles = StyleSheet.create({
         width: '30%',
         height: 60,
         alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 5
+        justifyContent: 'center'
     },
 
     info_boxes: {
