@@ -1,10 +1,9 @@
-import React, {useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import { getSessionData, setSessionData } from "../api/session";
 import {getMatiere, getUserFullName} from "../api/api";
 import { getAbsences } from "../api/api";
 import { getSession } from "../api/api";
-import { useEffect } from "react";
 import Moment from 'moment';
 
 const AbsenceScreen = ({ navigation }) => {
@@ -18,24 +17,39 @@ const AbsenceScreen = ({ navigation }) => {
 
     const getAllAbsences = async (user_id) => {
         getAbsences(user_id).then((res) => {
-            let sessions = [];
+            let promises = [];
+            // On récupère la session pour chaque absence
             for (let i = 0; i < res.length; i++) {
-                getSession(res[i].idSession).then((session) => {
-                    getMatiere(session.metaMatiere.idMatiere).then((matiere) => {
-                        sessions.push(
+                let id_session = res[i].idSession;
+                // On ajoute la requête à un tableau de promesses
+                promises.push(getSession(id_session));
+            }
+            Promise.all(promises).then((res) => {
+                let promises2 = [];
+                // On récupère la matiere pour chaque absence
+                for (let i = 0; i < res.length; i++) {
+                    let session = res[i];
+                    let id_matiere = session.metaMatiere.idMatiere;
+                    // On ajoute la requête à un tableau de promesses
+                    promises2.push(getMatiere(id_matiere));
+                }
+                Promise.all(promises2).then((result) => {
+                    let display = [];
+                    for (let i = 0; i < result.length; i++) {
+                        display.push(
                             <View style={ styles.absence } key = {i}>
-                                <Text style={ styles.value }>{ Moment(session.dateHeure).format('l') }</Text>
+                                <Text style={ styles.value }>{ Moment(res[i].dateHeure).format('l') }</Text>
                                 <Text style={ styles.value }>
-                                    { matiere.intitule }{'\n'}
-                                    { session.salle }
+                                    { result[i].intitule }{'\n'}
+                                    { res[i].salle }
                                 </Text>
-                                <Text style={ styles.value }>{ session.duree }h</Text>
+                                <Text style={ styles.value }>{ res[i].duree }h</Text>
                             </View>
                         );
-                        setView(sessions);
-                    });
-                });
-            }
+                    }
+                    setView(display);
+                })
+            });
         }).catch((err) => {});
     };
 
@@ -66,7 +80,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#2b99ce',
         width: '90%',
-        height: 45,
+        height: 50,
         alignItems: 'center',
         fontSize: 5
     },
@@ -79,7 +93,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: 'rgba(43, 153, 206, 0.1)',
         width: '90%',
-        height: 45,
+        height: 80,
         alignItems: 'center',
         fontSize: 5,
         borderColor: '#2b99ce',

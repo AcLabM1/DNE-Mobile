@@ -9,6 +9,8 @@ import InfoScreen from "./src/screens/InfoScreen";
 import ServicesScreen from "./src/screens/ServicesScreen";
 import ContactScreen from './src/screens/ContactScreen';
 
+console.disableYellowBox = true;
+
 const AppNavigator = createStackNavigator(
     {
         Connexion: LoginScreen,
