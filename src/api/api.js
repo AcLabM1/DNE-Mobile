@@ -1,6 +1,6 @@
 import {abs} from "react-native-reanimated";
 
-const URL = 'http://192.168.43.19';
+const URL = 'http://192.168.1.76';
 const PORT = '8080';
 
 const mockSuccess = (value) => {
@@ -155,4 +155,23 @@ export const getSession = async (session_id) => {
             return error;
         });
     return session;
+};
+
+export const getMatiere = async (matiere_id) => {
+    let matiere = {};
+    await fetch(URL + ':' + PORT + '/matieres/' + matiere_id, {
+        method: 'GET',
+        headers: {
+            'Accept': '*/*',
+            'Content-Type': 'application/json',
+            'Connection': 'keep-alive'
+        },
+    }).then((res) => res.json())
+        .then((resjson) => {
+            matiere = resjson;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return matiere;
 };

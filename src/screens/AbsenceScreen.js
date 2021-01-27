@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react'
 import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import { getSessionData, setSessionData } from "../api/session";
-import {getUserFullName} from "../api/api";
+import {getMatiere, getUserFullName} from "../api/api";
 import { getAbsences } from "../api/api";
 import { getSession } from "../api/api";
 import { useEffect } from "react";
@@ -21,17 +21,19 @@ const AbsenceScreen = ({ navigation }) => {
             let sessions = [];
             for (let i = 0; i < res.length; i++) {
                 getSession(res[i].idSession).then((session) => {
-                    sessions.push(
-                        <View style={ styles.absence } key = {i}>
-                            <Text style={ styles.value }>{ Moment(session.dateHeure).format('l') }</Text>
-                            <Text style={ styles.value }>
-                                NOM MATIERE{'\n'}
-                                { session.salle }
-                            </Text>
-                            <Text style={ styles.value }>{ session.duree }h</Text>
-                        </View>
-                    );
-                    setView(sessions);
+                    getMatiere(session.metaMatiere.idMatiere).then((matiere) => {
+                        sessions.push(
+                            <View style={ styles.absence } key = {i}>
+                                <Text style={ styles.value }>{ Moment(session.dateHeure).format('l') }</Text>
+                                <Text style={ styles.value }>
+                                    { matiere.intitule }{'\n'}
+                                    { session.salle }
+                                </Text>
+                                <Text style={ styles.value }>{ session.duree }h</Text>
+                            </View>
+                        );
+                        setView(sessions);
+                    });
                 });
             }
         }).catch((err) => {});
