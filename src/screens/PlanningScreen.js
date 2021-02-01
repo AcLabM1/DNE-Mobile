@@ -21,7 +21,7 @@ const PlanningScreen = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>On a pas l'API, lol</Text>
+            <Text>Données à venir..</Text>
         </View>
     );
 };
