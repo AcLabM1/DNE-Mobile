@@ -15,9 +15,14 @@ const LoginScreen = ({ navigation }) => {
 
             login(email, password)
             .then(async (res) => {
-                await setSessionData('auth_token', res.auth_token);
-                await setSessionData('user_id', res.user_id.toString());
-                navigation.navigate('Accueil');
+                if (res.user_id === undefined) {
+                    setErrorMessage('Les identifiants sont invalides.');
+                }
+                else {
+                    await setSessionData('auth_token', res.auth_token);
+                    await setSessionData('user_id', res.user_id.toString());
+                    navigation.navigate('Accueil');
+                }
             })
             .catch((err) => setErrorMessage(err.message));
     };
@@ -26,7 +31,7 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.container}>
             <View style={ styles.main_container }>
                 <Text h1 style={ styles.h1 }>PORTAIL DNE</Text>
-                {errorMessage ? <Text>{errorMessage}</Text> : null}
+                {errorMessage ? <Text style={ styles.errormsg }>/!\ {errorMessage}</Text> : null}
                 <TextInput
                     style={ styles.text_input }
                     placeholder='Adresse mail'
@@ -85,6 +90,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderRadius: 5,
         fontSize: 16,
+        fontWeight: 'bold'
+    },
+    errormsg: {
+        color: '#FF6053',
         fontWeight: 'bold'
     }
 })
