@@ -4,10 +4,9 @@ import Feather from 'react-native-vector-icons/Feather';
 import Foundation from 'react-native-vector-icons/Foundation';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { getSessionData, setSessionData } from "../api/session";
 import { getUserFullName } from "../api/api";
-import { getUsernameByID } from "../api/mock";
-
 
 const HomeScreen = ({ navigation }) => {
     const [userID, setUserID] = useState('0');
@@ -64,7 +63,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 10}}>
             <View style={{ width: "100%", position: 'absolute', top: 5, left: 5 }}>
-                <Text>Connecté en tant que { full_name }.</Text>
+                <Text style={{ fontWeight: 'bold' }}><FontAwesome name={ "user" }  size={ 15 } color="#2b99ce" /> { full_name }</Text>
             </View>
             <View style={{ flexDirection: "row", marginBottom: 50 }}>
                 <View style={{ width: '50%', flex: 1, alignItems: 'center' }}>
