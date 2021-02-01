@@ -34,10 +34,10 @@ jobs:
           name: Publish to DockerHub
           command: |
             docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-            docker tag app $DOCKER_HUB_USERNAME/tp-final-devops-front:$CIRCLE_BUILD_NUM
-            docker tag app $DOCKER_HUB_USERNAME/tp-final-devops-front:latest
-            docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:$CIRCLE_BUILD_NUM
-            docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:latest
+            docker tag app $DOCKER_HUB_USERNAME/dne-mobile:$CIRCLE_BUILD_NUM
+            docker tag app $DOCKER_HUB_USERNAME/dne-mobile:latest
+            docker push $DOCKER_HUB_USERNAME/dne-mobile:$CIRCLE_BUILD_NUM
+            docker push $DOCKER_HUB_USERNAME/dne-mobile:latest
 workflows:
   Install_and_Dockerize:
     jobs:
