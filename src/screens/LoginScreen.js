@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, TextInput, Button, Text } from 'react-native'
+import { StyleSheet, View, TextInput, Text } from 'react-native'
 import { login } from '../api/api';
-import {setToken} from "../api/token";
-import {getSessionData, setSessionData} from "../api/session";
+import { setSessionData} from "../api/session";
 
 const LoginScreen = ({ navigation }) => {
         const [errorMessage, setErrorMessage] = useState('');

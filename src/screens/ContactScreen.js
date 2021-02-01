@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import { getSessionData, setSessionData } from "../api/session";
+import { View, Text, StyleSheet } from 'react-native';
+import { getSessionData } from "../api/session";
 
 const ContactScreen = ({ navigation }) => {
     const [userID, setUserID] = useState('0');

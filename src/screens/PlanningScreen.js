@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { getSessionData, setSessionData } from "../api/session";
-import { getUsernameByID } from "../api/mock";
+import { View, Text, StyleSheet } from 'react-native';
+import { getSessionData } from "../api/session";
 
 const PlanningScreen = ({ navigation }) => {
     const [userID, setUserID] = useState('0');

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import { getSessionData, setSessionData } from "../api/session";
-import {getMatiere, getUserFullName} from "../api/api";
+import { View, Text, StyleSheet } from 'react-native';
+import { getSessionData } from "../api/session";
+import { getMatiere } from "../api/api";
 import { getAbsences } from "../api/api";
 import { getSession } from "../api/api";
 import Moment from 'moment';

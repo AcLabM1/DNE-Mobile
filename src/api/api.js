@@ -1,5 +1,3 @@
-import {abs} from "react-native-reanimated";
-
 const URL = 'http://192.168.0.31';
 const PORT = '8080';
 

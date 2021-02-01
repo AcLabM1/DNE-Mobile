@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import { getSessionData, setSessionData } from "../api/session";
-import { getUsernameByID } from "../api/mock";
+import { View, Text, StyleSheet } from 'react-native';
+import { getSessionData } from "../api/session";
 import { getUserInfo } from '../api/api';
 import Moment from 'moment';
 
