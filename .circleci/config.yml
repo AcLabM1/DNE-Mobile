@@ -1,0 +1,68 @@
+version: 2.1
+jobs:
+  Installation:
+    docker:
+      - image: circleci/node:12.9-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - npm-packages-{{ checksum "npm.lock" }}-{{ .Environment.CACHE_VERSION }}
+            - npm-packages
+      - run: yarn global add node-gyp && yarn install
+      - save_cache:
+          key: npm-packages-{{ checksum "npm.lock" }}-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - node_modules
+
+  Build:
+    docker:
+      - image: circleci/node:12.9-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - npm-packages-{{ checksum "npm.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Build Prod
+          command : npm start
+      - run:
+          name: Copy to workspace
+          command: |
+            cp dist/ /tmp/dist -r
+      - store_artifacts:
+          path: /tmp/dist
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - dist
+
+  Docker:
+    docker:
+      - image: circleci/buildpack-deps:stretch
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name:  Dockerize
+          command: |
+            docker build --cache-from=app -t app .
+      - run:
+          name: Publish to DockerHub
+          command: |
+            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+            docker tag app $DOCKER_HUB_USERNAME/tp-final-devops-front:$CIRCLE_BUILD_NUM
+            docker tag app $DOCKER_HUB_USERNAME/tp-final-devops-front:latest
+            docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:$CIRCLE_BUILD_NUM
+            docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:latest
+workflows:
+  Build_Test_N_Deploy_FRONT:
+    jobs:
+      - Installation
+      - Build:
+          requires:
+            - Installation
+      - Docker:
+          context: Docker
+          requires:
+            - Build
