@@ -20,28 +20,7 @@ jobs:
             - node_modules
           key: npm-packages-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
 
-  Docker:
-    docker:
-      - image: circleci/buildpack-deps:stretch
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name:  Dockerize
-          command: |
-            docker build --cache-from=app -t app .
-      - run:
-          name: Publish to DockerHub
-          command: |
-            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-            docker tag app $DOCKER_HUB_USERNAME/dne-mobile:$CIRCLE_BUILD_NUM
-            docker tag app $DOCKER_HUB_USERNAME/dne-mobile:latest
-            docker push $DOCKER_HUB_USERNAME/dne-mobile:$CIRCLE_BUILD_NUM
-            docker push $DOCKER_HUB_USERNAME/dne-mobile:latest
 workflows:
   Install_and_Dockerize:
     jobs:
       - Installation
-      - Docker:
-          requires:
-            - Installation
