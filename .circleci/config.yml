@@ -39,10 +39,9 @@ jobs:
             docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:$CIRCLE_BUILD_NUM
             docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:latest
 workflows:
-  Installa_and_Dockerize:
+  Install_and_Dockerize:
     jobs:
       - Installation
       - Docker:
-          context: Docker
           requires:
             - Installation
