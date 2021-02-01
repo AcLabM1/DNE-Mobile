@@ -7,13 +7,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - npm-packages-{{ checksum "npm.lock" }}-{{ .Environment.CACHE_VERSION }}
+            - npm-packages-{{ checksum "pom.xml" }}-{{ .Environment.CACHE_VERSION }}
             - npm-packages
-      - run: yarn global add node-gyp && yarn install
+      - run: npm install
       - save_cache:
-          key: npm-packages-{{ checksum "npm.lock" }}-{{ .Environment.CACHE_VERSION }}
-          paths:
-            - node_modules
+          key: npm-packages-{{ checksum "pom.xml" }}-{{ .Environment.CACHE_VERSION }}
 
   Build:
     docker:
@@ -22,7 +20,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - npm-packages-{{ checksum "npm.lock" }}-{{ .Environment.CACHE_VERSION }}
+            - npm-packages-{{ checksum "pom.xml" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Build Prod
           command : npm start
