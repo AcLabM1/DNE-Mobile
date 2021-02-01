@@ -11,6 +11,8 @@ jobs:
             - npm-packages
       - run: npm install
       - save_cache:
+          paths:
+            - node_modules
           key: npm-packages-{{ checksum "pom.xml" }}-{{ .Environment.CACHE_VERSION }}
 
   Build:
