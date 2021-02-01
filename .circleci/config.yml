@@ -9,7 +9,12 @@ jobs:
           keys:
             - npm-packages-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
             - npm-packages
-      - run: npm install -g expo-cli
+      - run:
+          name: Install Node Modules
+          command : npm install
+      - run:
+          name: Install Expo CLI
+          command : npm install expo-cli
       - save_cache:
           paths:
             - node_modules
