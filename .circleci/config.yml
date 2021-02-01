@@ -22,7 +22,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - npm-packages-{{ checksum "package.json.xml" }}-{{ .Environment.CACHE_VERSION }}
+            - npm-packages-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Build Prod
           command : npm start
