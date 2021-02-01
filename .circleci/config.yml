@@ -9,7 +9,7 @@ jobs:
           keys:
             - npm-packages-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
             - npm-packages
-      - run: npm install
+      - run: npm install -g expo-cli
       - save_cache:
           paths:
             - node_modules
@@ -56,7 +56,7 @@ jobs:
             docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:$CIRCLE_BUILD_NUM
             docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:latest
 workflows:
-  Build_Test_N_Deploy_FRONT:
+  Build_Test_N_Deploy:
     jobs:
       - Installation
       - Build:
