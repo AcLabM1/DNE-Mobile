@@ -7,4 +7,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 2020
-CMD ["npm", "serve"]
+CMD ["npm", "start"]

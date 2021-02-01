@@ -20,28 +20,6 @@ jobs:
             - node_modules
           key: npm-packages-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
 
-  Build:
-    docker:
-      - image: circleci/node:12.9-browsers
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - npm-packages-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
-      - run:
-          name: Build Prod
-          command : npm start
-      - run:
-          name: Copy to workspace
-          command: |
-            cp dist/ /tmp/dist -r
-      - store_artifacts:
-          path: /tmp/dist
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - dist
-
   Docker:
     docker:
       - image: circleci/buildpack-deps:stretch
@@ -61,12 +39,9 @@ jobs:
             docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:$CIRCLE_BUILD_NUM
             docker push $DOCKER_HUB_USERNAME/tp-final-devops-front:latest
 workflows:
-  Build_Test_N_Deploy:
+  Installa_and_Dockerize:
     jobs:
       - Installation
-      - Build:
-          requires:
-            - Installation
       - Docker:
           context: Docker
           requires:
