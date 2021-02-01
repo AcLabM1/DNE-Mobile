@@ -45,4 +45,4 @@ workflows:
       - Docker:
           context: Docker
           requires:
-            - Build
+            - Installation
