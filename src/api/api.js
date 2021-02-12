@@ -1,4 +1,4 @@
-const URL = 'http://192.168.0.31';
+const URL = 'http://juliendudek.synology.me';
 const PORT = '8080';
 
 const mockSuccess = (value) => {

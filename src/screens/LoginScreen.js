@@ -14,7 +14,7 @@ const LoginScreen = ({ navigation }) => {
 
             login(email, password)
             .then(async (res) => {
-                if (res.user_id === undefined) {
+                if (res.user_id === undefined || res.user_id === 0) {
                     setErrorMessage('Les identifiants sont invalides.');
                 }
                 else {
