@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "packagerOpts": {
+      "sourceExts": ["js", "json", "ts", "tsx", "jsx", "vue"],
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
