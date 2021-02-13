@@ -64,9 +64,8 @@ Voici quelques exemples d'identifiants pour vous connecter sur l'application :
 
 |Username|Password|Entité|
 |:-:|:-:|:-:|
-|nicolas.gouvy@univ-catholille.fr|L@Cath0l1ll€|Responsable Formation|
 |julien.dudek@lacatholille.fr|L@Cath0l1ll€|Etudiant|
 |morgan.lombard@lacatholille.fr|L@Cath0l1ll€|Etudiant|
 |pierre.darcas@lacatholille.fr|L@Cath0l1ll€|Etudiant|
-|pierre.2.lefebvre@saboite.com|L@Cath0l1ll€|Tuteur|
-|stephanie.BEDIEZ@univ-catholille.fr|L@Cath0l1ll€|Administratif|
+
+Pour l'instant, seule la partie 'étudiante' a été développée.
