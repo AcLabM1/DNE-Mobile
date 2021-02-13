@@ -43,7 +43,7 @@ Vous pourrez ensuite simplement lancer l'application avec la commande suivante :
 docker run --env REACT_NATIVE_PACKAGER_HOSTNAME=192.168.0.31 -it -p 19000:19000 -p 19001:19001 -p 19002:19002 giannigiux/dne-mobile:latest
 ```
 
-**En remplassant 192.168.0.31 par votre adresse IP privée.**
+**En remplaçant 192.168.0.31 par votre adresse IP privée.**
 
 Le terminal vous affichera alors un **QR code** que vous pourrez scanner via **l'application Expo**. (sélectionnez **Scan QR Code** et **scanner le QR code**)
 
