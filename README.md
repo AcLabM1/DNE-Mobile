@@ -13,73 +13,51 @@ Pour le développement de cette application nous avons réalisé des maquettes e
 
 Maquette complète disponible ci-après : https://xd.adobe.com/view/54702321-ff21-4b5b-bbce-e3e56ab45cb7-0123/?fullscreen
 
-## Installation
+## Installation d'Expo
 
-### Prérequis
+Pour pouvoir tester notre application, il faudra installer l'**application expo** sur votre smartphone (Android ou iOS).
 
-#### Node
-
-Il faudra installer **nodejs** et **npm**. Voici les commandes à lancer sous Ubuntu 20.04 :
-```
-sudo apt update
-sudo apt install nodejs
-sudo apt install npm
-```
-
-#### Expo
-
-Il faudra égalemer installer **expo**. Voici la commande à lancer sous Ubuntu 20.04 :
-
-```
-npm install expo-cli --global
-```
-
-Il sera ensuite nécessaire d'installer l'**application expo** sur votre smartphone (Android ou iOS).
+Expo est un cadre permettant de développer rapidement des applications natives React. Elle permet également, et c'est ce qui nous intéresse ici, de tester une application React en temps réel sans avoir à la déployer.
 
 Celle-ci est disponible directement sur le **Play Store** ou l'**Apple Store**.
 
 **/!\ ATTENTION :** Il faudra que votre ordinateur et votre smartphone soient connectés sur le même réseau Wifi pour pouvoir voir les modifications de votre application en temps réel sur votre smartphone.
 
-#### Intégration de l'API
+## Lancement de l'application
 
-Pour pouvoir tester l'application, il faudra avoir au préalable **installé l'API DNE** disponible ici : https://github.com/AcLabM1/DNE-API (son installation est expliquée dans le README de l'API)
-
-Une fois l'API installée et lancée (via docker par exemple), il faudra **configurer l'adresse IP** pour connecter l'application mobile à l'API qui tourne en local.
-
-Pour trouver l'IP nécessaire, il faudra lancer la commande suivante dans un terminal :
-
-`ifconfig` (pour Linux / MAC)
-
-`ipconfig` (pour Windows)
-
-Il faudra ensuite récupérer l'adresse **IP privée** (par exemple 192.168.0.31) de votre ordinateur. (tutoriel pour récupérer l'adresse IP voulue : https://fr.wikihow.com/v%C3%A9rifier-son-adresse-IP-sur-Linux)
-
-Vous pourrez alors modifier la variable **URL** dans le fichier **/src/api/api.js**.
-
-### Installation de l'application
-
-Pour récupérer les sources du projet, veuillez lancer cette commande :
+L'application est très facilement testable via le container docker que nous avons créé et récupérable via cette commande :
 
 ```
-git clone https://github.com/AcLabM1/DNE-Mobile.git
+docker pull giannigiux/dne-mobile:latest
 ```
 
-Une fois dans le dossier de l'application, installez les dépendances :
+Avant de lancer votre image docker, il faudra récupérer l'**IP privée** de votre ordinateur. (par exemple 192.168.0.31)
+
+Pour la trouvée, voici un tutoriel : https://fr.wikihow.com/v%C3%A9rifier-son-adresse-IP-sur-Linux
+
+Le tutoriel est prévu pour linux mais vous pourrez retrouver les mêmes informations via la commande `ipconfig` sous windows. (contre `ifconifg` sous linux)
+
+Vous pourrez ensuite simplement lancer l'application avec la commande suivante :
 
 ```
-npm install
+docker run --env REACT_NATIVE_PACKAGER_HOSTNAME=192.168.0.31 -it -p 19000:19000 -p 19001:19001 -p 19002:19002 giannigiux/dne-mobile:latest
 ```
 
-## Lancement
+**En remplassant 192.168.0.31 par votre adresse IP privée.**
 
-Pour lancer l'application, lancez simplement cette commande :
+Le terminal vous affichera alors un **QR code** que vous pourrez scanner via **l'application Expo**. (sélectionnez **Scan QR Code** et **scanner le QR code**)
 
-```
-npm start
-```
+L'application devrait se lancer sur votre smartphone.
 
-Un **QR Code** apparaîtra alors dans votre terminal ainsi que dans un onglet de votre navigateur.
+## Utilisation de l'application
 
-Pour tester l'application sur votre smartphone, il faudra alors **lancer l'application expo**, sélectionner **Scan QR Code** et **scanner le QR code**.
+Voici quelques exemples d'identifiants pour vous connecter sur l'application :
 
-L'application devrait se lancer sur votre smartphone et se rafraichir à chaque fois que vous enregistrerez une modification dans le code.
+|Username|Password|Entité|
+|:-:|:-:|:-:|
+|nicolas.gouvy@univ-catholille.fr|L@Cath0l1ll€|Responsable Formation|
+|julien.dudek@lacatholille.fr|L@Cath0l1ll€|Etudiant|
+|morgan.lombard@lacatholille.fr|L@Cath0l1ll€|Etudiant|
+|pierre.darcas@lacatholille.fr|L@Cath0l1ll€|Etudiant|
+|pierre.2.lefebvre@saboite.com|L@Cath0l1ll€|Tuteur|
+|stephanie.BEDIEZ@univ-catholille.fr|L@Cath0l1ll€|Administratif|
