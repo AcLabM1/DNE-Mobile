@@ -45,6 +45,10 @@ docker run --env REACT_NATIVE_PACKAGER_HOSTNAME=192.168.0.31 -it -p 19000:19000 
 
 **En remplaçant 192.168.0.31 par votre adresse IP privée.**
 
+<p align="center">
+  <img src="assets/qr_code_example.png">
+</p>
+
 Le terminal vous affichera alors un **QR code** que vous pourrez scanner via **l'application Expo**. (sélectionnez **Scan QR Code** et **scanner le QR code**)
 
 L'application devrait se lancer sur votre smartphone.
